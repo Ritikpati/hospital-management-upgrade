@@ -1,24 +1,24 @@
-# Replace 952652904096 (and region if changed). Values = terraform outputs.
+# Replace 211125323087 (and region if changed). Values = terraform outputs.
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: hms-sa
   namespace: hms
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::952652904096:role/hms-app
+    eks.amazonaws.com/role-arn: arn:aws:iam::211125323087:role/hms-app
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata: {name: hms-config, namespace: hms}
 data:
   AWS_REGION: us-east-1
-  SNS_TOPIC_ARN: arn:aws:sns:us-east-1:952652904096:hms-notifications
-  USER_BUCKET: hms-952652904096-user-data
-  RECEIPT_BUCKET: hms-952652904096-payment-receipts
-  PHOTO_BUCKET: hms-952652904096-patient-photos
-  APPOINTMENT_BUCKET: hms-952652904096-appointments
-  LAB_BUCKET: hms-952652904096-lab-reports
-  PHARMACY_BUCKET: hms-952652904096-pharmacy-bills
+  SNS_TOPIC_ARN: arn:aws:sns:us-east-1:211125323087:hms-notifications
+  USER_BUCKET: hms-211125323087-user-data
+  RECEIPT_BUCKET: hms-211125323087-payment-receipts
+  PHOTO_BUCKET: hms-211125323087-patient-photos
+  APPOINTMENT_BUCKET: hms-211125323087-appointments
+  LAB_BUCKET: hms-211125323087-lab-reports
+  PHARMACY_BUCKET: hms-211125323087-pharmacy-bills
   DOCTOR_SERVICE_URL: http://doctor-service.hms.svc.cluster.local
   SMTP_USER: ritikranjanspiderhacker@gmail.com
   SMTP_NAME: Ritik CarePulse
