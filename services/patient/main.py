@@ -61,7 +61,7 @@ def with_photo(rows):
 
 def details_text(p, weeks=None, title="PATIENT DETAILS"):
     addr = ", ".join(x for x in (p.get("address"), p.get("city"), p.get("state")) if x) or "-"
-    lines = [f"RITIK HMS - {title}", "",
+    lines = [f"RITIK CarePulse - {title}", "",
              f"Patient ID: {p['id']}", f"Name: {p['first_name']} {p['last_name']}",
              f"Age / Gender: {p.get('age') or '-'} / {p.get('gender') or '-'}", f"Mobile: {p.get('mobile') or '-'}",
              f"Blood group: {p.get('blood_group') or '-'}", f"Address: {addr}",

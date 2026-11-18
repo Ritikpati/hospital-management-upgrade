@@ -60,11 +60,11 @@ def get_order(oid, u):
 
 
 def order_text(o, title):
-    lines = [f"RITIK HMS - {title}", "", f"Lab order ID: {o['id']}", f"Patient: {o['patient_name']}",
+    lines = [f"RITIK CarePulse - {title}", "", f"Lab order ID: {o['id']}", f"Patient: {o['patient_name']}",
              f"Test: {o['test_name']}", f"Price: Rs. {float(o['price']):.2f}", f"Status: {o['status']}"]
     if o.get("result_text"):
         lines += ["", "RESULT", o["result_text"]]
-    return "\n".join(lines + ["", "Thank you - Ritik CarePluse", ""])
+    return "\n".join(lines + ["", "Thank you - Ritik CarePulse", ""])
 
 
 @app.get("/lab/tests")
@@ -93,7 +93,7 @@ def order(b: OrderIn, u=Depends(need("laboratory"))):
                 (t[0]["id"], t[0]["name"], t[0]["price"], b.patient_id, b.patient_name.strip(), email, u["sub"]), fetch=True)[0]
     o = get_order(row["id"], u)
     if email:
-        notify(email, f"Lab test ordered - {o['test_name']} - Ritik HMS", order_text(o, "LAB TEST ORDERED"))
+        notify(email, f"Lab test ordered - {o['test_name']} - Ritik CarePulse", order_text(o, "LAB TEST ORDERED"))
     return {"id": row["id"], "emailed_to": email}
 
 
