@@ -54,7 +54,7 @@ def receipt_text(a):
     return "\n".join(["RITIK HMS - PAYMENT RECEIPT", "", f"Booking ID: {a['id']}", f"Patient: {a['patient_name']}",
                       f"Doctor: {a['doctor']} ({a['speciality']})", f"Appointment: {day}, {tm}",
                       f"Amount paid: Rs. {a['fee']}", f"Method: {PAY_METHODS.get(a.get('payment_method'), '-')}",
-                      "Status: Paid", "", "Thank you - Ritik HMS", ""])
+                      "Status: Paid", "", "Thank you - Ritik CarePulse", ""])
 
 
 @app.on_event("startup")

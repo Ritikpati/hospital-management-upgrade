@@ -141,7 +141,7 @@ async def add_result(oid: int, result_text: str = Form(...), report: Optional[Up
         put_bytes(BUCKET, key, await report.read(), report.content_type or "application/octet-stream")
     o = {**o, "status": "completed", "result_text": text}
     if o.get("patient_email"):
-        notify(o["patient_email"], f"Lab result ready - {o['test_name']} - Ritik HMS", order_text(o, "LAB RESULT READY"),
+        notify(o["patient_email"], f"Lab result ready - {o['test_name']} - Ritik CarePulse", order_text(o, "LAB RESULT READY"),
                attachments=[(f"lab-result-{oid}.txt", order_text(o, "LAB RESULT"))])
     return {"ok": True, "status": "completed"}
 

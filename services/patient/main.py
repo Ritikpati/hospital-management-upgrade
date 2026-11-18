@@ -82,7 +82,7 @@ def add_patient(p: Patient, u=Depends(current_user)):
                 [*d.values(), u["sub"]], fetch=True)[0]
     if p.email:
         subscribe(p.email)
-        notify(p.email, "Registration confirmed - Ritik HMS",
+        notify(p.email, "Registration confirmed - Ritik CarePulse",
                details_text({**d, "id": row["id"]}, title="REGISTRATION CONFIRMED"))
     return {**row, "emailed_to": p.email}
 
