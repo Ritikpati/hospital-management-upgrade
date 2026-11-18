@@ -598,7 +598,7 @@ function signOut(){['tok','role','name','services'].forEach(store.del);S.tok=S.r
 const route=()=>{const h=location.hash.replace(/^#\/?/,'').split('/');return{page:h[0]||'dashboard',id:h[1]}};
 const go=h=>{location.hash=h};
 /* ---- per-service access ---- */
-const SERVICES=[['appointments','cal','Appointments'],['laboratory','flask','Laboratory'],['pharmacy','pill','Pharmacy'],['queue','clock','Queue']];
+const SERVICES=[['appointments','cal','Appointments'],['laboratory','flask','Laboratory'],['pharmacy','pill','Pharmacy']];
 const svcLabel=k=>(SERVICES.find(x=>x[0]===k)||[0,0,k])[2];
 /* admin: everything. Staff with a services list: only those pages (+ account). Old sessions without a list keep the old behaviour. */
 const canPage=p=>S.role==='admin'||p==='account'||(Array.isArray(S.services)?S.services.includes(p):!['reports','users'].includes(p));
