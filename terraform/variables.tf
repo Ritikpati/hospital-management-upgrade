@@ -146,3 +146,54 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+#---------------------------------Route53&Cloudfront-----------------------------------#
+
+variable "hosted_zone_name" {
+  description = "Existing Route53 PUBLIC hosted zone, e.g. example.com. Empty = skip CloudFront/Route53"
+  type        = string
+  default     = ""
+}
+
+variable "app_subdomain" {
+  description = "Record inside the zone, e.g. hms -> hms.example.com. Empty = zone apex"
+  type        = string
+  default     = ""
+}
+
+variable "origin_dns" {
+  description = "Optional manual override of the load balancer DNS name. Empty = auto-discover"
+  type        = string
+  default     = ""
+}
+
+variable "cloudfront_price_class" {
+  type    = string
+  default = "PriceClass_100"
+}
+
+#----------------------bastion--------------------------------------#
+
+
+variable "bastion_enabled" {
+  description = "Create the public client server"
+  type        = bool
+  default     = true
+}
+
+variable "bastion_instance_type" {
+  type    = string
+  default = "t3.micro"
+}
+
+variable "bastion_allowed_cidrs" {
+  description = "CIDRs allowed to SSH, e.g. [\"203.0.113.10/32\"] (your public IP). Empty = no SSH, use SSM only. Never use 0.0.0.0/0."
+  type        = list(string)
+  default     = []
+}
+
+variable "bastion_key_name" {
+  description = "Existing EC2 key pair name for SSH. Empty = no key (SSM only)"
+  type        = string
+  default     = ""
+}
