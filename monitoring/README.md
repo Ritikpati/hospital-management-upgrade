@@ -86,7 +86,13 @@ kubectl -n monitoring exec deploy/kube-prometheus-stack-grafana -c grafana -- gr
 ## Test the email alert
 
 ```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+kubectl rollout status deployment/metrics-server -n kube-system
+kubectl logs -n kube-system deployment/metrics-server
+kubectl describe apiservice v1beta1.metrics.k8s.io
 kubectl run cpu-test --image=busybox --restart=Never -- sh -c 'while true; do :; done'
+kubectl top nodes
+kubectl top pod cpu-test
 # wait about 6-7 minutes, check Alertmanager/mail, then:
 kubectl delete pod cpu-test
 ```
